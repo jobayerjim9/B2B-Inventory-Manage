@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.fragment.ProfileFragment" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/menuButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_more_vert_24" />
+
+            <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+                android:id="@+id/carousel"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:visibility="visible"
+                app:autoPlay="true"
+                app:autoPlayDelay="3000"
+                app:autoWidthFixing="true"
+                app:bottomShadowAlpha="0.6"
+                app:bottomShadowHeight="64dp"
+                app:captionMargin="0dp"
+                app:captionTextSize="14sp"
+                app:carouselBackground="#333333"
+                app:carouselType="BLOCK"
+                app:imagePlaceholder="@drawable/ic_picture"
+                app:imageScaleType="fitCenter"
+                app:imageViewId="@id/img"
+                app:indicatorMargin="0dp"
+                app:itemLayout="@layout/item_carousel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nameText"
+                app:nextButtonId="@id/btn_next"
+                app:nextButtonLayout="@layout/next_button_layout"
+                app:nextButtonMargin="4dp"
+                app:previousButtonId="@id/btn_previous"
+                app:previousButtonLayout="@layout/previous_button_layout"
+                app:previousButtonMargin="4dp"
+                app:scaleOnScroll="false"
+                app:scalingFactor="0.15"
+                app:showBottomShadow="true"
+                app:showCaption="true"
+                app:showIndicator="true"
+                app:showNavigationButtons="true"
+                app:showTopShadow="true"
+                app:topShadowAlpha="0.6"
+                app:topShadowHeight="32dp" />
+
+            <TextView
+                android:id="@+id/nameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/purple_700"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toStartOf="@+id/menuButton2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/totalItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Total Item"
+                android:textColor="#66BB6A"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/piechart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/piechart"
+                app:layout_constraintTop_toTopOf="@+id/piechart"
+                app:layout_constraintVertical_bias="0.65" />
+
+            <org.eazegraph.lib.charts.PieChart
+                android:id="@+id/piechart"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginStart="16dp"
+
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:layout_weight="1"
+                android:padding="6dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/companyRecycler"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/totalOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="Total Order"
+                android:textColor="#FFA726"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@+id/totalItem"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/piechart" />
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Top Companies"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/carousel"
+                app:layout_constraintStart_toStartOf="@+id/carousel"
+                app:layout_constraintTop_toBottomOf="@+id/carousel" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/companyRecycler"
+                android:layout_width="0dp"
+                android:layout_height="250dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView30" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

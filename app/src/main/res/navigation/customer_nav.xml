@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/customer_nav"
+    app:startDestination="@id/profileCustomer">
+
+    <fragment
+        android:id="@+id/homeCustomer"
+        android:name="com.nmadpl.pitstop.ui.fragment.CustomerHomeFragment"
+        android:label="CustomerHomeFragment"
+        tools:layout="@layout/fragment_customer_home" />
+    <fragment
+
+        android:id="@+id/cartCustomer"
+        android:name="com.nmadpl.pitstop.ui.fragment.CartFragment"
+        android:label="CartFragment"
+        tools:layout="@layout/fragment_cart" />
+    <fragment
+
+        android:id="@+id/ordersCustomer"
+        android:name="com.nmadpl.pitstop.ui.fragment.OrdersFragment"
+        android:label="fragment_orders"
+        tools:layout="@layout/fragment_orders" />
+    <fragment
+        android:id="@+id/profileCustomer"
+        android:name="com.nmadpl.pitstop.ui.fragment.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

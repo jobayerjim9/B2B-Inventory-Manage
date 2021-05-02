@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "386681528129",
+    "project_id": "pitstop-by-national",
+    "storage_bucket": "pitstop-by-national.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:386681528129:android:f06e2a309572c0d60b4bc0",
+        "android_client_info": {
+          "package_name": "com.nmadpl.pitstop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "386681528129-9io27s8nh06svpohqbo6hd579p88m60f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1oKVAVUYwEW-Dxei0ccr8zfuKq6erQZc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "386681528129-9io27s8nh06svpohqbo6hd579p88m60f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

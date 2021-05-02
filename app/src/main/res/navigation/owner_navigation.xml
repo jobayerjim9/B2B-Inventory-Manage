@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/owner_navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.nmadpl.pitstop.ui.fragment.HomeFragment"
+        tools:layout="@layout/fragment_home"
+        android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/salesStatusFragment"
+        tools:layout="@layout/fragment_sales_status"
+        android:name="com.nmadpl.pitstop.ui.fragment.SalesStatusFragment"
+        android:label="SalesStatusFragment" >
+        <action
+            android:id="@+id/action_salesStatusFragment_to_homeFragment2"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productsFragment"
+        tools:layout="@layout/fragment_products"
+        android:name="com.nmadpl.pitstop.ui.fragment.ProductsFragment"
+        android:label="ProductsFragment" >
+        <action
+            android:id="@+id/action_productsFragment_to_salesStatusFragment2"
+            app:destination="@id/salesStatusFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/companyFragment"
+        android:name="com.nmadpl.pitstop.ui.fragment.CompanyFragment"
+        android:label="CompanyFragment" >
+        <action
+            android:id="@+id/action_companyFragment_to_productsFragment"
+            app:destination="@id/productsFragment" />
+    </fragment>
+</navigation>

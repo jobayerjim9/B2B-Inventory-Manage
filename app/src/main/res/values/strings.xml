@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">PITSTOP BY NATIONAL</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_choose_file">Choose Your Excel File</string>
+    <string name="itemCode">Item Code %s</string>
+    <string name="mfgCode">Company: %s</string>
+    <string name="itemName">Item Name %s</string>
+    <string name="itemPrice">Price %s</string>
+    <string name="category">Category %s</string>
+    <string name="model_name">Model: %s</string>
+    <string name="description">Description:\n %s</string>
+    <string name="qty">Qty: %d</string>
+    <string name="total_price">Total: %s</string>
+    <string name="orderId">Order Id: %s</string>
+    <string name="orderDate">Order Date: %s</string>
+    <string name="totalItem">Total Item: %d</string>
+    <string name="orderTotal">Order Total: %.2f</string>
+    <string name="orderStatus">Order Status: %s</string>
+    <string name="companyName">Company Name: %s</string>
+    <string name="rank">Rank: %d</string>
+    <string name="orderAddress">City: %s</string>
+</resources>
