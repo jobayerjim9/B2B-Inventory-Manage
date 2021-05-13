@@ -148,42 +148,25 @@ public class ExcelProductUploadActivity extends AppCompatActivity {
             isUploading=false;
             return;
         }
-        isUploading=true;
-        String placeHolder="Uploaded "+(index+1)+"/"+productModels.size();
+        isUploading = true;
+        String placeHolder = "Uploaded " + (index + 1) + "/" + productModels.size();
         binding.uploadTextProgress.setText(placeHolder);
         binding.uploadProgress.setProgress(index);
-        placeHolder="Duplicate "+duplicate;
+        placeHolder = "Duplicate " + duplicate;
         binding.duplicateText.setText(placeHolder);
-        placeHolder="Failed "+failedItems.size();
+        placeHolder = "Failed " + failedItems.size();
         binding.failedText.setText(placeHolder);
-        final ProductModel productModel=productModels.get(index);
-        DatabaseReference databaseReference=FirebaseDatabase.getInstance().getReference(FirebaseConstants.PRODUCT_PATH).child(productModel.getItemCode());
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        final ProductModel productModel = productModels.get(index);
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(FirebaseConstants.PRODUCT_PATH).child(productModel.getItemCode());
+        databaseReference.setValue(productModel).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    duplicate++;
-                    uploadProduct(index+1);
+            public void onComplete(@NonNull Task<Void> task) {
+                uploadProduct(index + 1);
+                if (!task.isSuccessful()) {
+                    failedItems.add(productModel);
                 }
-                else {
-                    databaseReference.setValue(productModel).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            uploadProduct(index+1);
-                            if (!task.isSuccessful()) {
-                                failedItems.add(productModel);
-                            }
-                        }
-                    });
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(ExcelProductUploadActivity.this,error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
 
 
     }

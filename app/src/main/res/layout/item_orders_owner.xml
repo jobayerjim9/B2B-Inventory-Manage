@@ -2,9 +2,20 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
+
+        <import type="android.view.View" />
+
         <variable
             name="data"
             type="com.nmadpl.pitstop.models.OrderModel" />
+
+        <variable
+            name="firmName"
+            type="String" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -19,14 +30,23 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <ProgressBar
+                android:id="@+id/progressBar15"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:visibility="@{loading ? View.VISIBLE:View.GONE}"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="@color/purple_700" />
+
             <TextView
                 android:id="@+id/textView18"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{@string/orderId(data.orderId)}"
+                android:text="@{@string/firmName(firmName)}"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView19"

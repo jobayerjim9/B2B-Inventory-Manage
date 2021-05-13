@@ -10,9 +10,17 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.annotations.NotNull;
 import com.nmadpl.pitstop.R;
 import com.nmadpl.pitstop.databinding.ItemOrdersBinding;
+import com.nmadpl.pitstop.models.FirebaseConstants;
 import com.nmadpl.pitstop.models.OrderModel;
+import com.nmadpl.pitstop.models.UserDetail;
 import com.nmadpl.pitstop.ui.activity.OrderDetailCustomerActivity;
 
 import java.util.ArrayList;
@@ -52,6 +60,7 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.ViewHolder
                 context.startActivity(intent);
             }
         });
+
         holder.binding.executePendingBindings();
     }
 

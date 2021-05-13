@@ -93,18 +93,28 @@ public class OrderModel implements Serializable {
 
 
     public static class OrderItem implements Serializable {
-        private String itemId,itemName,mfgCode;
+        private String itemId, itemName, mfgCode, unit;
         private int qty;
         private double itemTotalTotal;
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
 
         public OrderItem() {
         }
 
-        public OrderItem(String itemId, String itemName,String mfgCode, int qty, double itemTotalTotal) {
+        public OrderItem(String itemId, String itemName, String mfgCode, int qty, double itemTotalTotal, String unit) {
             this.itemId = itemId;
             this.itemName = itemName;
             this.qty = qty;
             this.itemTotalTotal = itemTotalTotal;
+            this.mfgCode = mfgCode;
+            this.unit = unit;
         }
 
         public String getMfgCode() {

@@ -76,6 +76,7 @@ public class ProductsCustomerAdapter extends RecyclerView.Adapter<ProductsCustom
         cartModel.setTotalPrice((Double.parseDouble(productModel.getRate())*cartModel.getQty()));
         cartModel.setProductName(productModel.getItemName());
         cartModel.setMfgCode(productModel.getMfgCode());
+        cartModel.setUnit(productModel.getUnit());
         if (productModel.getImages().size()>0) {
             cartModel.setThumbNail(productModel.getImages().get(0));
         }

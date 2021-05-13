@@ -1,13 +1,21 @@
 package com.nmadpl.pitstop.models;
 
 public class CartModel {
-    private String productId,mfgCode,productName,thumbNail;
+    private String productId, mfgCode, productName, thumbNail, unit;
     private int qty;
     private double totalPrice;
 
     public CartModel() {
-        qty=1;
-        totalPrice=0.0;
+        qty = 1;
+        totalPrice = 0.0;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
     public String getMfgCode() {

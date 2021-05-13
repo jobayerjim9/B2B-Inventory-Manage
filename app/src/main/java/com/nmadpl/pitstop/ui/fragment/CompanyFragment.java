@@ -7,6 +7,8 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +30,8 @@ import java.util.Comparator;
 
 public class CompanyFragment extends Fragment {
     private FragmentCompanyBinding binding;
-    private ArrayList<CompanyModel> companyModels=new ArrayList<>();
+    private ArrayList<CompanyModel> companyModels = new ArrayList<>();
+    private ArrayList<CompanyModel> companyModelsBackup = new ArrayList<>();
     private CompanyOwnerAdapter companyOwnerAdapter;
     public CompanyFragment() {
         // Required empty public constructor
@@ -48,8 +51,47 @@ public class CompanyFragment extends Fragment {
 
     private void initView() {
         binding.companyRecycler.setLayoutManager(new LinearLayoutManager(requireContext()));
-        companyOwnerAdapter=new CompanyOwnerAdapter(requireContext(),companyModels);
+        companyOwnerAdapter = new CompanyOwnerAdapter(requireContext(), companyModels);
         binding.companyRecycler.setAdapter(companyOwnerAdapter);
+        binding.searchText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String[] regex = s.toString().split(",");
+                companyModels.clear();
+                if (s.toString().isEmpty()) {
+                    binding.searchTermText3.setVisibility(View.GONE);
+                    companyModels.addAll(companyModelsBackup);
+                } else {
+                    for (CompanyModel companyModel : companyModelsBackup) {
+                        for (String s1 : regex) {
+                            if (companyModel.getMfgCode().trim().toLowerCase().contains(s1.toLowerCase().trim())) {
+                                companyModels.add(companyModel);
+                            }
+                        }
+                    }
+                    binding.searchTermText3.setText("Found " + companyModels.size() + " Items");
+                    binding.searchTermText3.setVisibility(View.VISIBLE);
+                    binding.searchTermText3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            binding.searchText.setText("");
+                        }
+                    });
+                }
+
+
+            }
+        });
         getCompanyData();
     }
 
@@ -70,15 +112,14 @@ public class CompanyFragment extends Fragment {
                     public int compare(CompanyModel o1, CompanyModel o2) {
                         if (o1.getRank()>o2.getRank()) {
                             return 1;
-                        }
-                        else if (o1.getRank()<o2.getRank()) {
+                        } else if (o1.getRank() < o2.getRank()) {
                             return -1;
-                        }
-                        else {
+                        } else {
                             return 0;
                         }
                     }
                 });
+                companyModelsBackup.addAll(companyModels);
                 companyOwnerAdapter.notifyDataSetChanged();
             }
 

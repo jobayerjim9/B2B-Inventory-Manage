@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.annotations.NotNull;
 import com.nmadpl.pitstop.R;
 import com.nmadpl.pitstop.databinding.ItemOrdersBinding;
 import com.nmadpl.pitstop.databinding.ItemOrdersOwnerBinding;
@@ -58,17 +59,33 @@ public class OrdersOwnerAdapter extends RecyclerView.Adapter<OrdersOwnerAdapter.
     }
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final OrderModel orderModel=orderModels.get(position);
+        final OrderModel orderModel = orderModels.get(position);
         holder.binding.setData(orderModel);
         holder.binding.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(context, OrderDetailActivity.class);
-                intent.putExtra("item",orderModel);
+                Intent intent = new Intent(context, OrderDetailActivity.class);
+                intent.putExtra("item", orderModel);
                 context.startActivity(intent);
             }
         });
+        holder.binding.setLoading(true);
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(FirebaseConstants.USER_PATH).child(orderModel.getOrderBy());
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                holder.binding.setLoading(false);
+                UserDetail userDetail = snapshot.getValue(UserDetail.class);
+                if (userDetail != null) {
+                    holder.binding.setFirmName(userDetail.getFirmName());
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        });
         holder.binding.executePendingBindings();
     }
 

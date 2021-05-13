@@ -215,6 +215,7 @@ public class CreateProductActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     binding.setLoading(false);
                     Toast.makeText(CreateProductActivity.this, "Product Created", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
             }
         });

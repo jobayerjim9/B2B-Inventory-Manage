@@ -4,185 +4,215 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.activity.OrderDetailActivity">
     <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="loading"
+            type="Boolean" />
+
         <variable
             name="data"
             type="com.nmadpl.pitstop.models.OrderModel" />
+
         <variable
             name="user"
             type="com.nmadpl.pitstop.models.UserDetail" />
     </data>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView18"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@{@string/orderId(data.orderId)}"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/textView19"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:drawableStart="@drawable/ic_baseline_date_range_24"
-            android:gravity="center"
-            android:text="@{@string/orderDate(data.orderDate)}"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:drawableTint="@color/black" />
-
-        <TextView
-            android:id="@+id/textView20"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:drawableStart="@drawable/ic_baseline_category_24"
-            android:gravity="center"
-            android:text="@{@string/totalItem(data.orderItems.size)}"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:drawableTint="@color/black" />
-
-        <TextView
-            android:id="@+id/textView21"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:drawableStart="@drawable/ic_baseline_calculate_24"
-            android:gravity="center"
-            android:text="@{@string/orderTotal(data.orderTotal)}"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:drawableTint="@color/black" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:drawableStart="@drawable/ic_baseline_query_stats_24"
-            android:gravity="center"
-            android:text="@{@string/orderStatus(data.status)}"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:drawableTint="@color/black" />
-
-        <TextView
-            android:id="@+id/textView31"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Product Info"
-            android:textAlignment="center"
-            android:textColor="@color/purple_700"
-            android:textSize="18sp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/orderItemRecycler"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/textView25"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="User Info"
-            android:textAlignment="center"
-            android:textColor="@color/purple_700"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/textView37"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_baseline_perm_contact_calendar_24"
-            android:gravity="center"
-            android:text="@{user.fullName}"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            app:drawableTint="@color/black" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView28"
+                android:id="@+id/textView18"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:text="@{@string/orderId(data.orderId)}"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_baseline_date_range_24"
+                android:gravity="center"
+                android:text="@{@string/orderDate(data.orderDate)}"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:drawableTint="@color/black" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_baseline_category_24"
+                android:gravity="center"
+                android:text="@{@string/totalItem(data.orderItems.size)}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:drawableTint="@color/black" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_baseline_calculate_24"
+                android:gravity="center"
+                android:text="@{@string/orderTotal(data.orderTotal)}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:drawableTint="@color/black" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawableStart="@drawable/ic_baseline_query_stats_24"
+                android:gravity="center"
+                android:text="@{@string/orderStatus(data.status)}"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:drawableTint="@color/black" />
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Product Info"
+                android:textAlignment="center"
+                android:textColor="@color/purple_700"
+                android:textSize="18sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/orderItemRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <ProgressBar
+                android:id="@+id/progressBar13"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:visibility="@{loading ? View.VISIBLE :View.GONE}"
+                android:layout_height="wrap_content"
+                android:indeterminateTint="@color/purple_700" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="User Info"
+                android:textAlignment="center"
+                android:textColor="@color/purple_700"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textView37"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_baseline_perm_contact_calendar_24"
                 android:gravity="center"
-                android:text="@{user.firmName}"
+                android:text="@{user.fullName}"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 app:drawableTint="@color/black" />
 
-            <TextView
-                android:id="@+id/textView26"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableStart="@drawable/ic_baseline_phone_24"
-                android:gravity="center"
-                android:text="@{user.phone}"
-                android:textColor="@color/black"
-                android:textIsSelectable="true"
-                android:textSize="16sp"
-                app:drawableTint="@color/black" />
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
 
+                <TextView
+                    android:id="@+id/textView28"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_baseline_perm_contact_calendar_24"
+                    android:gravity="center"
+                    android:text="@{user.firmName}"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:drawableTint="@color/black" />
+
+                <TextView
+                    android:id="@+id/textView26"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_baseline_phone_24"
+                    android:gravity="center"
+                    android:text="@{user.phone}"
+                    android:textColor="@color/black"
+                    android:textIsSelectable="true"
+                    android:textSize="16sp"
+                    app:drawableTint="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_baseline_person_pin_circle_24"
+                    android:gravity="center"
+                    android:text="@{user.city}"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    app:drawableTint="@color/black" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_baseline_emoji_transportation_24"
+                    android:gravity="center"
+                    android:text="@{user.transport}"
+                    android:textColor="@color/black"
+                    android:textIsSelectable="true"
+                    android:textSize="16sp"
+                    app:drawableTint="@color/black" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/changeStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Change Status"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/createInvoice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:clickable="@{!loading}"
+                android:text="Create Invoice"
+                android:textAllCaps="false" />
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableStart="@drawable/ic_baseline_person_pin_circle_24"
-                android:gravity="center"
-                android:text="@{user.city}"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                app:drawableTint="@color/black" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableStart="@drawable/ic_baseline_emoji_transportation_24"
-                android:gravity="center"
-                android:text="@{user.transport}"
-                android:textColor="@color/black"
-                android:textIsSelectable="true"
-                android:textSize="16sp"
-                app:drawableTint="@color/black" />
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/changeStatus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Change Status"
-            android:textAllCaps="false" />
-    </LinearLayout>
     </ScrollView>
 </layout>

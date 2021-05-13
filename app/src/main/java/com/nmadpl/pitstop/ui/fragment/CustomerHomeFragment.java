@@ -122,6 +122,7 @@ public class CustomerHomeFragment extends Fragment implements ItemSelectListener
 
             @Override
             public void afterTextChanged(Editable s) {
+                String[] regex = s.toString().split(",");
                 binding.setLoading(true);
                 productModels.clear();
                 // String searchTerm=binding.editTextTextPersonName.getText().toString().toLowerCase();
@@ -142,16 +143,29 @@ public class CustomerHomeFragment extends Fragment implements ItemSelectListener
                 }
                 else {
                     for (ProductModel productModel : productModelsBackup) {
-                        if (category != null) {
-                            if (productModel.getDescription().toLowerCase().contains(s.toString().toLowerCase().trim()) || productModel.getItemName().toLowerCase().contains(s.toString().toLowerCase().trim()) || productModel.getMfgCode().toLowerCase().contains(s.toString().toLowerCase().trim())) {
+                        Log.d("regexSize", regex.length + "");
+                        for (String s1 : regex) {
+                            String[] split = s1.toLowerCase().split(" ");
+                            boolean found = false;
+                            for (String t : split) {
+                                if (productModel.getDescription().toLowerCase().trim().contains(t) || productModel.getItemName().toLowerCase().contains(t) || productModel.getMfgCode().toLowerCase().contains(s1.toLowerCase().trim())) {
+                                    found = true;
+                                } else {
+                                    found = false;
+                                    break;
+                                }
+                            }
+                            if (category != null && found) {
                                 if (category.toLowerCase().equals(productModel.getTypeName().toLowerCase())) {
                                     productModels.add(productModel);
                                 }
-                            }
-                        } else {
-                            if (productModel.getDescription().toLowerCase().contains(s.toString().toLowerCase().trim()) || productModel.getItemName().toLowerCase().contains(s.toString().toLowerCase().trim()) || productModel.getMfgCode().toLowerCase().contains(s.toString().toLowerCase().trim())) {
+                            } else if (found) {
                                 productModels.add(productModel);
                             }
+//                                if (productModel.getDescription().toLowerCase().trim().matches(s1.toLowerCase().trim()) || productModel.getItemName().toLowerCase().contains(s1.toLowerCase().trim()) || productModel.getMfgCode().toLowerCase().contains(s1.toLowerCase().trim())) {
+//                                    productModels.add(productModel);
+//                                }
+
                         }
                     }
                     productsAdapter=new ProductsCustomerAdapter(requireContext(),productModels);

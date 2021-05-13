@@ -52,6 +52,7 @@ dependencies {
     implementation 'com.github.stfalcon:stfalcon-imageviewer:1.0.0'
     implementation 'com.github.blackfizz:eazegraph:1.2.5l@aar'
     implementation 'com.nineoldandroids:library:2.4.0'
+    implementation 'com.itextpdf:itext7-core:7.1.13'
     implementation 'com.github.hedzr:android-file-chooser:v1.2.0-final'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation files('libs/jxl.jar')

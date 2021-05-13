@@ -168,9 +168,7 @@ public class CartFragment extends Fragment {
                         if (cartModel!=null) {
                             total=total+cartModel.getTotalPrice();
                             cartModels.add(cartModel);
-                            binding.getData().getOrderItems().add(new OrderModel.OrderItem(cartModel.getProductId(),cartModel.getProductName(),cartModel.getMfgCode(),cartModel.getQty(),cartModel.getTotalPrice()));
-
-
+                            binding.getData().getOrderItems().add(new OrderModel.OrderItem(cartModel.getProductId(), cartModel.getProductName(), cartModel.getMfgCode(), cartModel.getQty(), cartModel.getTotalPrice(), cartModel.getUnit()));
                         }
                     }
                     cartAdapter=new CartAdapter(context,cartModels);

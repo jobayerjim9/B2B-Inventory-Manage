@@ -45,8 +45,8 @@ import java.util.ArrayList;
 public class ProductEditActivity extends AppCompatActivity {
     private ActivityProductEditBinding binding;
     private ProductModel productModel;
-    final String[] permissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
-    private ArrayList<Bitmap> bitmaps=new ArrayList<>();
+    final String[] permissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    private ArrayList<Bitmap> bitmaps = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
